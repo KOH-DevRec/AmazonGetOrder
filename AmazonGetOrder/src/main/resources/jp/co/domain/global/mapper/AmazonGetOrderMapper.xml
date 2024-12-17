@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.domain.global.mapper.AmazonGetOrderMapper">
+
+<!--
+ * マッパー
+ *
+ *  < CHANGE HISTORY >
+ *     X.XXXXXX    0000/00/00 ①XXXXXXXX
+-->
+
+  <!-- 店舗API認証情報取得 -->
+  <select id="execAMZ0330" parameterType="int" resultType="jp.co.domain.global.util.ApiAuthorization">
+    <!-- RPMで指定 -->
+    SPDB.dbo.SAMZ0330 #{prm}
+  </select>
+
+  <!-- 注文データ格納 -->
+  <select id="execAMZ0331" parameterType="int" resultType="int">
+    <!-- RPMで指定 -->
+    SPDB.dbo.SAMZ0331 
+    #{prm}
+   ,#{cid}
+   ,#{oid}
+   ,#{tenpocd}
+  </select>
+  
+  <!-- 取込済みID取得 -->
+  <select id="execAMZ0331_4" parameterType="int" resultType="String">
+    <!-- RPMで指定 -->
+    SPDB.dbo.SAMZ0331 
+    #{prm}
+   ,#{cid}
+   ,#{oid}
+   ,#{tenpocd}
+  </select>
+
+  <!-- 一時データ格納 -->
+  <select id="execAMZ0332" resultType="int">
+    <!-- RPMで指定 -->
+    SPDB.dbo.SAMZ0332 
+    #{prm}
+   ,#{cid}
+   ,#{oid} 
+   ,#{tenpocd}
+   ,#{data0}
+   ,#{data1}
+   ,#{data2}
+   ,#{data3}
+   ,#{data4}
+   ,#{data5}
+   ,#{data6}
+   ,#{data7}
+   ,#{data8}
+   ,#{data9}
+   ,#{data10}
+   ,#{data11}
+  </select>
+  
+  <!-- 日次処理確認 -->
+  <select id="execVAMZ0201" parameterType="int" resultType="int">
+  <!-- RPMで指定 -->
+    SPDB.dbo.SAMZ0331_01 #{prm}
+  </select>
+</mapper>
